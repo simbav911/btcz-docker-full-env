@@ -50,10 +50,10 @@ RUN	 	 sudo mkdir /data && sudo mkdir /data/db
 # Install the BTCZ binaries
 RUN	 	 mkdir /home/adminbtcz/bitcoinz
 WORKDIR  /home/adminbtcz/bitcoinz
-RUN 	 curl -L -o bitcoinz-2.0.8-EXT-6c6447fba1-ubuntu1604-linux64.zip https://github.com/btcz/bitcoinz/releases/download/2.0.8-EXT/bitcoinz-2.0.8-EXT-6c6447fba1-ubuntu1604-linux64.zip
-RUN 	 unzip bitcoinz-2.0.8-EXT-6c6447fba1-ubuntu1604-linux64.zip
+RUN 	 wget https://github.com/btcz/bitcoinz/releases/download/2.1.0/bitcoinz-c73d5cdb2b70-aarch64-linux-gnu.tar.gz
+RUN 	 tar -xvf bitcoinz-c73d5cdb2b70-aarch64-linux-gnu.tar.gz
 RUN	 	 chmod +x -R ./
-RUN	 	 rm bitcoinz-2.0.8-EXT-6c6447fba1-ubuntu1604-linux64.zip
+RUN	 	 rm bitcoinz-c73d5cdb2b70-aarch64-linux-gnu.tar.gz
 
 
 # Install nodejs 8
@@ -129,6 +129,15 @@ WORKDIR  /home/adminbtcz/
 RUN	 	 git clone https://github.com/bitcoinz-wallets/web-wallet.git
 WORKDIR  /home/adminbtcz/web-wallet/
 
+
+# Install Nginx
+RUN pacman -S nginx --noconfirm
+
+# Copy Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose ports
+EXPOSE 80 443
 
 # Switch back to root user to finalize
 USER     root
@@ -279,11 +288,3 @@ CMD ["btcz-start"]
 # sudo docker exec -it btcz-full-env bash -c "bitcoinz-cli getinfo"
 # 
 # http://127.0.0.1:3001/status 
-
-
-
-
-
-
-
-
