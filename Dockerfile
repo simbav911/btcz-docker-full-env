@@ -85,48 +85,48 @@ RUN      npm -g install pm2
 
 # Install the bitcore-node-btcz & the Insight explorer
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/MarcelusCH/bitcore-node-btcz.git
+RUN		 git clone https://github.com/MarcelusCH/bitcore-node-btcz.git
 WORKDIR  /home/adminbtcz/bitcore-node-btcz/
 RUN      npm  install --verbose 
-RUN	 	 sudo ln -sfn /home/adminbtcz/bitcore-node-btcz/bin/bitcore-node  /usr/bin/bitcore-node
+RUN		 sudo ln -sfn /home/adminbtcz/bitcore-node-btcz/bin/bitcore-node  /usr/bin/bitcore-node
 WORKDIR  /home/adminbtcz/
-RUN	 	 bitcore-node create btcz-explorer
+RUN		 bitcore-node create btcz-explorer
 WORKDIR  /home/adminbtcz/btcz-explorer/
-RUN	 	 rm -R /home/adminbtcz/btcz-explorer/data/
-RUN	 	 bitcore-node install MarcelusCH/insight-api-btcz MarcelusCH/insight-ui-btcz
+RUN		 rm -R /home/adminbtcz/btcz-explorer/data/
+RUN		 bitcore-node install MarcelusCH/insight-api-btcz MarcelusCH/insight-ui-btcz
 
 
 # Install the VaultZ
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/bitcoinz-sites/BtcZ-VaultZ-Info.git
+RUN		 git clone https://github.com/bitcoinz-sites/BtcZ-VaultZ-Info.git
 WORKDIR  /home/adminbtcz/BtcZ-VaultZ-Info/
 RUN      npm  install --verbose 
 
 
 # Install the rates API
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/bitcoinz-wallets/btcz-rates-api.git
+RUN		 git clone https://github.com/bitcoinz-wallets/btcz-rates-api.git
 WORKDIR  /home/adminbtcz/btcz-rates-api/
 RUN      npm  install --verbose 
 
 
 # Install the BWS
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/MarcelusCH/bitcore-wallet-service.git
+RUN		 git clone https://github.com/MarcelusCH/bitcore-wallet-service.git
 WORKDIR  /home/adminbtcz/bitcore-wallet-service/
 RUN      npm  install --verbose 
 
 
 # Install the paper wallet
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/bitcoinz-sites/paper.btcz.rocks.git
+RUN		 git clone https://github.com/bitcoinz-sites/paper.btcz.rocks.git
 WORKDIR  /home/adminbtcz/paper.btcz.rocks/ 
 RUN 	 yarn install --verbose 
 
 
 # Install the web wallet
 WORKDIR  /home/adminbtcz/
-RUN	 	 git clone https://github.com/bitcoinz-wallets/web-wallet.git
+RUN		 git clone https://github.com/bitcoinz-wallets/web-wallet.git
 WORKDIR  /home/adminbtcz/web-wallet/
 
 
